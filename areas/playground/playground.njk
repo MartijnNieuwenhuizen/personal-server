@@ -1,0 +1,16 @@
+<html>
+  <main>
+    <h1>{{ title }}</h1>
+    <p>{{ intro }}</p>
+
+    <ul>
+      {% for item in items %}
+        <li>
+          <h2>{{ item.name }}</h2>
+          <p>{{ item.explanation }}</p>
+          <a href="{{ item.href }}">Check it out!</a>
+        </li>
+      {% endfor %}
+    </ul>
+  </main>
+</html>
