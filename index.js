@@ -8,8 +8,10 @@ const app = express()
 // Configure view renderer
 const projectBaseDir = path.resolve(`${__dirname}`)
 nunjucks.configure(projectBaseDir, {
-  autoescape: true,
   express: app,
+  trimBlocks: true,
+  lstripBlocks: true,
+  throwOnUndefined: true,
 })
 
 // Routes

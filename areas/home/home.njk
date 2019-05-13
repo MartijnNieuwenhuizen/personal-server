@@ -1,11 +1,9 @@
-<html>
-  <main>
-    <h1>{{ title }}</h1>
+<main>
+  <h1>{{ viewModel.title }}</h1>
 
-    <ul>
-      {% for item in items %}
-        <li>{{ item.name }}</li>
-      {% endfor %}
-    </ul>
-  </main>
-</html>
+  <ul>
+    {% for item in viewModel.items %}
+      <li>{{ item.name }}</li>
+    {% endfor %}
+  </ul>
+</main>

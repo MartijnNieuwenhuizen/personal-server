@@ -1,7 +1,8 @@
 const render = require('../../lib/render')
 
 module.exports = (req, res, next) => {
-  const data = {
+  const viewModel = {
+    styles: ['home.css'],
     title: 'My First Nunjucks Page',
     items: [
       { name: 'item #1' },
@@ -11,5 +12,5 @@ module.exports = (req, res, next) => {
     ],
   }
 
-  render(res, 'home', data)
+  render(res, 'home', viewModel)
 }
