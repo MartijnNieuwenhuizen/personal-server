@@ -7,6 +7,7 @@ const app = express()
 
 // Configure view renderer
 const projectBaseDir = path.resolve(`${__dirname}`)
+
 nunjucks.configure(projectBaseDir, {
   express: app,
   trimBlocks: true,
@@ -16,6 +17,9 @@ nunjucks.configure(projectBaseDir, {
 
 // Routes
 routes.register(app)
+
+// statics
+app.use(express.static('public'))
 
 // Launch app
 app.listen(5000)

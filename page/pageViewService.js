@@ -12,4 +12,5 @@ module.exports = (viewModel, templatePath) => {
     .setTitle(viewModel.title || config.title)
     .setStyles([...config.styles, ...customStyles])
     .setScripts([...config.scripts, ...customScripts])
+    .getResult()
 }

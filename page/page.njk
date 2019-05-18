@@ -8,7 +8,7 @@
 
     {# Render styles #}
     {% for styleHref in viewModel.styles %}
-      <link rel="stylesheet" type="text/css" href="{{ styleHref }}">
+      <link rel="stylesheet" type="text/css" href="/css/{{ styleHref }}">
     {% endfor %}
   </head>
   <body>
@@ -17,7 +17,7 @@
 
     {# Render scripts #}
     {% for scriptHref in viewModel.scripts %}
-      <script href="{{ scriptHref }}"></script>
+      <script href="/js/{{ scriptHref }}"></script>
     {% endfor %}
   </body>
 </html>

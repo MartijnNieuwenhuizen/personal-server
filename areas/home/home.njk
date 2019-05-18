@@ -1,9 +1,25 @@
-<main>
-  <h1>{{ viewModel.title }}</h1>
+{# {%- component 'header' -%} #}
 
-  <ul>
-    {% for item in viewModel.items %}
-      <li>{{ item.name }}</li>
-    {% endfor %}
-  </ul>
+<main class="page-item">
+  <div class="page-item">
+    <section class="constrain--s">
+      <h2 class="section-title">{{ viewModel.articlesTitle }}</h2>
+      <article>
+        {{ viewModel.parsedMarkdown | safe }}
+      </article>
+      {# {%- component 'articles-list' -%} #}
+    </section>
+  </div>
+
+  <div class="page-item">
+    <section class="constrain--s page-item">
+      <h2 class="section-title">{{ viewModel.blogsTitle }}</h2>
+      {# {%- component 'articles-list' -%} #}
+    </section>
+  </div>
+
 </main>
+
+{# <div class="content-item">
+    {%- component 'footer' -%}
+  </div> #}
