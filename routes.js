@@ -1,8 +1,8 @@
 const express = require('express')
 const router = express.Router()
 
-const home = require('./areas/home/home')
-const playground = require('./areas/playground/playground')
+const home = require('./areas/home/home-view-service')
+const playground = require('./areas/playground/playground-view-service')
 
 /**
  * @param {Object} app

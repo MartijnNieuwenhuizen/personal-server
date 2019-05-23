@@ -14,6 +14,7 @@ nunjucks.configure(projectBaseDir, {
   lstripBlocks: true,
   throwOnUndefined: true,
 })
+app.set('view engine', 'nunjucks')
 
 // Routes
 routes.register(app)

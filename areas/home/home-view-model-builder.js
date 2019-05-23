@@ -7,6 +7,7 @@ class HomeViewModelBuilder {
     this.result = {
       articlesTitle: '',
       blogsTitle: '',
+      articlesList: [],
     }
 
     return this
@@ -22,8 +23,8 @@ class HomeViewModelBuilder {
     return this
   }
 
-  setParsedMarkdown(parsedMarkdown) {
-    this.result.parsedMarkdown = parsedMarkdown
+  setArticlesList(articlesList) {
+    this.result.articlesList = articlesList
     return this
   }
 

@@ -1,7 +1,11 @@
-const render = require('../../lib/render')
+const diContainer = require('../../lib/di-container')
+const viewService = require('../../lib/view-service')(diContainer)(
+  'areas/playground/playground'
+)
+const pageViewService = require('../../page/pageViewService')
 
 module.exports = (req, res, next) => {
-  const content = {
+  const viewModel = {
     title: 'Playground',
     intro: 'Some Fun and play projects, next to ...',
     items: [
@@ -14,5 +18,8 @@ module.exports = (req, res, next) => {
     ],
   }
 
-  render(res, 'playground', content)
+  const renderedView = viewService.getRenderedView(viewModel)
+  const renderedPage = pageViewService({ body: renderedView })
+
+  res.send(renderedPage)
 }

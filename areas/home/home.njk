@@ -4,9 +4,7 @@
   <div class="page-item">
     <section class="constrain--s">
       <h2 class="section-title">{{ viewModel.articlesTitle }}</h2>
-      <article>
-        {{ viewModel.parsedMarkdown | safe }}
-      </article>
+      {{ viewModel.articlesList | safe }}
       {# {%- component 'articles-list' -%} #}
     </section>
   </div>

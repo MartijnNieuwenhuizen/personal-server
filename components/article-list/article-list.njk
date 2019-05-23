@@ -1,0 +1,7 @@
+<ol class="article-list">
+  {% for article in viewModel.articles %}
+    <li class="article-list__item content-item">
+      {{ article | safe }}
+    </li>
+  {% endfor %}
+</ol>
