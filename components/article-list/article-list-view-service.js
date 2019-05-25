@@ -12,15 +12,15 @@ class ArticleListViewService {
   }
 
   getRenderedView() {
-    const fakeArticlesInput = this.articleStore.getAllIds()
+    const articleIds = this.articleStore.getAllIds()
 
-    const fakeArticles = fakeArticlesInput.map(articleId => {
-      return this.articlePrevViewService.getRenderedView(articleId)
-    })
+    const articles = articleIds.map(articleId =>
+      this.articlePrevViewService.getRenderedView(articleId)
+    )
 
     const viewModel = this.articleListViewModelBuilder
       .createInstance()
-      .setArticles(fakeArticles)
+      .setArticles(articles)
       .getResult()
 
     return this.viewService.getRenderedView(viewModel)
