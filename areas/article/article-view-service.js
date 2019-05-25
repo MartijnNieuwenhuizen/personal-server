@@ -1,25 +1,24 @@
 const diContainer = require('../../lib/di-container')
 const viewService = diContainer.getInstance('lib/view-service')(diContainer)(
-  'areas/home/home'
+  'areas/article/article'
 )
-const homeViewModelBuilder = diContainer.getInstance(
-  'areas/home/home-view-model-builder'
+const articleViewModelBuilder = diContainer.getInstance(
+  'areas/article/article-view-model-builder'
 )()
 const pageViewService = diContainer.getInstance('page/pageViewService')
-const articleListViewService = diContainer.getInstance(
-  'components/article-list/article-list-view-service'
-)(diContainer)
+const articleStore = diContainer.getInstance('lib/articles-store-factory')()
 
 module.exports = (req, res, next) => {
-  const viewModel = homeViewModelBuilder
+  const articleId = req.url.split('/article/').filter(urlPart => urlPart)
+  const articleContents = articleStore.getById(articleId).articleContents
+
+  const viewModel = articleViewModelBuilder
     .createInstance()
-    .setArticlesTitle('My Articles')
-    .setBlogsTitle('My Title')
-    .setArticlesList(articleListViewService.getRenderedView())
+    .setArticle(articleContents)
     .getResult()
 
   const renderedView = viewService.getRenderedView(viewModel)
-
   const renderedPage = pageViewService({ body: renderedView })
+
   res.send(renderedPage)
 }

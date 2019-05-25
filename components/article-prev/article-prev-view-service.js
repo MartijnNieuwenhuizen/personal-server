@@ -10,7 +10,7 @@ class ArticleListViewService {
 
     const viewModel = this.articlePrevViewModelBuilder
       .createInstance()
-      .setHref('fakeHref')
+      .setHref(`/article/${articleContents.id}`)
       .setTitle(articleContents.title)
       .setDate(articleContents.date)
       .setReadingTime(articleContents.readingTime)
