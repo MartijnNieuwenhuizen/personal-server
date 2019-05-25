@@ -2,6 +2,7 @@ const express = require('express')
 const path = require('path')
 const nunjucks = require('nunjucks')
 const routes = require('./routes')
+const bootstrap = require('./bootstrap')
 
 const app = express()
 
@@ -15,6 +16,9 @@ nunjucks.configure(projectBaseDir, {
   throwOnUndefined: true,
 })
 app.set('view engine', 'nunjucks')
+
+// Bootstrap of the application
+bootstrap.execute()
 
 // Routes
 routes.register(app)
