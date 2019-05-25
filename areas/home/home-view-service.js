@@ -9,10 +9,14 @@ const pageViewService = diContainer.getInstance('page/pageViewService')
 const articleListViewService = diContainer.getInstance(
   'components/article-list/article-list-view-service'
 )(diContainer)
+const navigationViewService = diContainer.getInstance(
+  'components/navigation/navigation-view-service'
+)(diContainer)
 
 module.exports = (req, res, next) => {
   const viewModel = homeViewModelBuilder
     .createInstance()
+    .setNavigation(navigationViewService.getRenderedView('articles-and-blogs'))
     .setArticlesTitle('My Articles')
     .setBlogsTitle('My Title')
     .setArticlesList(articleListViewService.getRenderedView())

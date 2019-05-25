@@ -5,11 +5,17 @@ class HomeViewModelBuilder {
 
   createInstance() {
     this.result = {
+      navigation: '',
       articlesTitle: '',
       blogsTitle: '',
       articlesList: [],
     }
 
+    return this
+  }
+
+  setNavigation(navigation) {
+    this.result.navigation = navigation
     return this
   }
 

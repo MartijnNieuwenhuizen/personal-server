@@ -7,6 +7,9 @@ const articleViewModelBuilder = diContainer.getInstance(
 )()
 const pageViewService = diContainer.getInstance('page/pageViewService')
 const articleStore = diContainer.getInstance('lib/articles-store-factory')()
+const navigationViewService = diContainer.getInstance(
+  'components/navigation/navigation-view-service'
+)(diContainer)
 
 module.exports = (req, res, next) => {
   const articleId = req.url.split('/article/').filter(urlPart => urlPart)
@@ -14,6 +17,7 @@ module.exports = (req, res, next) => {
 
   const viewModel = articleViewModelBuilder
     .createInstance()
+    .setNavigation(navigationViewService.getRenderedView('articles-and-blogs'))
     .setArticle(articleContents)
     .getResult()
 
