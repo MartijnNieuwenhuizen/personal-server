@@ -1,0 +1,14 @@
+<nav class="nav">
+  <ol class="nav__list">
+    {% for item in viewModel.navigationItems %}
+      {%- set classes = 'nav__link' -%}
+      {%- if item.active === true -%}
+        {%- set classes = 'nav__link nav__link--active' -%}
+      {%- endif  -%}
+
+      <li class="nav__item">
+        <a class="{{ classes }}" href="{{ item.href }}">{{ item.label }}</a>
+      </li>
+    {% endfor %}
+  </ol>
+</nav>

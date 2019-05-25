@@ -5,9 +5,15 @@ class ArticleViewModelBuilder {
 
   createInstance() {
     this.result = {
+      navigation: '',
       article: '',
     }
 
+    return this
+  }
+
+  setNavigation(navigation) {
+    this.result.navigation = navigation
     return this
   }
 
