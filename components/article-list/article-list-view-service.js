@@ -2,18 +2,21 @@ class ArticleListViewService {
   constructor(
     viewService,
     articlePrevViewService,
-    articleListViewModelBuilder
+    articleListViewModelBuilder,
+    articleStore
   ) {
     this.viewService = viewService
     this.articlePrevViewService = articlePrevViewService
     this.articleListViewModelBuilder = articleListViewModelBuilder
+    this.articleStore = articleStore
   }
 
   getRenderedView() {
-    const fakeArticlesInput = ['a', 'b', 'c']
-    const fakeArticles = fakeArticlesInput.map(article =>
-      this.articlePrevViewService.getRenderedView()
-    )
+    const fakeArticlesInput = this.articleStore.getAllIds()
+
+    const fakeArticles = fakeArticlesInput.map(articleId => {
+      return this.articlePrevViewService.getRenderedView(articleId)
+    })
 
     const viewModel = this.articleListViewModelBuilder
       .createInstance()
@@ -36,9 +39,12 @@ module.exports = diContainer => {
     'components/article-list/article-list'
   )
 
+  const articleStore = diContainer.getInstance('lib/articles-store-factory')()
+
   return new ArticleListViewService(
     viewService,
     articlePrevViewService,
-    articleListViewModelBuilder
+    articleListViewModelBuilder,
+    articleStore
   )
 }

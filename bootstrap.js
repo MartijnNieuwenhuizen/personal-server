@@ -1,14 +1,8 @@
-const articleStore = require('./lib/articles-store-factory')
+const articleStore = require('./lib/articles-store-factory')()
 const fileReader = require('./lib/file-reader')()
 const fmr = require('./lib/fmr')
 
 const { filterMarkdownFiles, parseMarkdown, filterJsonFiles, parseJson } = fmr
-
-let ArticleStore = null
-
-const initializeArticleStore = () => {
-  ArticleStore = articleStore()
-}
 
 const setArticlesToStore = baseUrl => {
   fileReader
@@ -35,7 +29,7 @@ const setArticlesToStore = baseUrl => {
         articleContents,
       }
     })
-    .map(article => ArticleStore.set(article))
+    .map(article => articleStore.set(article))
 }
 
 const storeArticles = () => {
@@ -50,7 +44,6 @@ const storeArticles = () => {
 }
 
 const execute = () => {
-  initializeArticleStore()
   storeArticles()
 }
 
